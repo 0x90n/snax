@@ -1,19 +1,20 @@
 <html>
 <head>
+<title>Snax encoder</title>
+<style type="text/css">
+<!--
+body {background: white; color: black;}
+form {margin: 0;}
+h1 {font-family: Calibri, sans-serif;}
+textarea {background: #EEF;}
+-->
+</style>
 
-<title>LiveTyping</title>
-<h2>Demo</h2>
 
-<p>Type in the text box to try it:
-</p>
-
-<fieldset>
-<input type="text"></input>
-</fieldset>
-
-
-<p id="original"></p>
-
+<textarea cols="100" rows="10" id="encodeT"></textarea>
+<p id="output"></p>
+<textarea cols="100" rows="10" id="decodeT2"></textarea>
+<p id="output2"></p>
 <script>
  
 function set(el,text){
@@ -24,8 +25,9 @@ function set(el,text){
  */
  
 function setupUpdater(){
- var input=document.getElementsByTagName('input')[0]
-   , orig=document.getElementById('original')
+ var input=document.getElementById('encodeT')
+   , orig=document.getElementById('output')
+   , dec=document.getElementById('output2')
    , oldText=input.value
    , timeout=null;
  
@@ -35,6 +37,7 @@ function setupUpdater(){
   var newText=input.value;
   if (newText==oldText) return; else oldText=newText;
   set(orig, newText);
+  set(dec, newText);
  }
  
 /* eventHandler is called on keyboard and mouse events.
