@@ -12,10 +12,8 @@ textarea {background: #EEF;}
 
 <h2>Special Chars</h2>
 <textarea cols="70" rows="5" id="encodeT"></textarea>
-<!--<p id="output"></p>-->
 <br>
 <textarea cols="70" rows="5" id="output"></textarea>
-<!--<p id="output2"></p>-->
 <br><br>
 <textarea cols="70" rows="5" id="decodeT"></textarea>
 <br>
@@ -46,7 +44,7 @@ function setupUpdater(){
   var newText2=input2.value;
   var unencoded = input.value;
   var encoded = input2.value;
-  if (newText==oldText) return; else oldText=newText;
+  //if (newText==oldText) return; else oldText=newText;
   newText = encodeURIComponent(unencoded).replace(/'/g,"%26").replace(/"/g,"%22");
   newText2 = decodeURIComponent(encoded.replace(/\+/g,  " "));
   set(orig, newText);
@@ -62,6 +60,7 @@ function setupUpdater(){
  }
  
  input.onkeydown=input.onkeyup=input.onclick=eventHandler;
+ input2.onkeydown=input2.onkeyup=input2.onclick=eventHandler;
 }
  
 setupUpdater();
