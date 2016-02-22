@@ -1,0 +1,63 @@
+<html>
+<head>
+
+<title>Snax encodeT</title>
+<style type="text/css">
+<!--
+body {background: white; color: black;}
+form {margin: 0;}
+h1 {font-family: Calibri, sans-serif;}
+textarea {background: #EEF;}
+-->
+</style>
+<script type="text/javascript">
+
+
+function encode() {
+	var obj = document.getElementById('encodeT');
+	var out = document.getElementById('decodeT2');
+	var unencoded = obj.value;
+	out.value = encodeURIComponent(unencoded).replace(/'/g,"%26").replace(/"/g,"%22");
+}
+
+function encodeSpecial() {
+	var obj = document.getElementById('encodeT');
+	var out = document.getElementById('decodeT2');
+	var unencoded = obj.value;
+	out.value = encodeURIComponent(unencoded).replace(/'/g,"%26").replace(/"/g,"%22").replace(/[!'()*]/g, function(c) {
+		return '%' + c.charCodeAt(0).toString(16);
+	});
+}
+
+function decode() {
+	var obj = document.getElementById('decodeT2');
+	var out = document.getElementById('encodeT');
+	var encoded = obj.value;
+	out.value = decodeURIComponent(encoded.replace(/\+/g,  " "));
+}
+</script>
+</head>
+<body>
+
+
+<form onsubmit="return true;">
+<h1>EzEncoder</h1>
+<textarea cols="100" rows="10" id="encodeT"></textarea>
+<br>
+<textarea cols="100" rows="10" id="decodeT2"></textarea>
+<div>
+<input type="button" onclick="encode()" value="Encode Default">
+<input type="button" onclick="encodeSpecial()" value="Encode Special">
+<input type="button" onclick="decode()" value="Decode">
+</div>
+</form>
+<div>
+<p>Encode Default: Escapes all characters except Alphanumeric and Special.</p>
+<p>Encode Special: Escapes all characters except Alphanumeric. Includes: - _ . ! ~ * ' ( ) -- ENCODE URICOMPONENT</p>
+<br>
+<p> To Do: Double encode</p>
+</div>
+</body>
+<!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent-->
+<!--http://xkr.us/articles/javascript/encode-compare/-->
+</html>

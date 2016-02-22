@@ -1,0 +1,60 @@
+<html>
+<head>
+
+<title>LiveTyping</title>
+<h2>Demo</h2>
+
+<p>Type in the text box to try it:
+</p>
+
+<fieldset>
+<input type="text"></input>
+</fieldset>
+
+
+<p id="original"></p>
+
+<script>
+ 
+function set(el,text){
+ while(el.firstChild)el.removeChild(el.firstChild);
+ el.appendChild(document.createTextNode(text))}
+ 
+/* setupUpdater will be called once, on page load.
+ */
+ 
+function setupUpdater(){
+ var input=document.getElementsByTagName('input')[0]
+   , orig=document.getElementById('original')
+   , oldText=input.value
+   , timeout=null;
+ 
+/* handleChange is called 50ms after the user stops 
+   typing. */
+ function handleChange(){
+  var newText=input.value;
+  if (newText==oldText) return; else oldText=newText;
+  set(orig, newText);
+ }
+ 
+/* eventHandler is called on keyboard and mouse events.
+   If there is a pending timeout, it cancels it.
+   It sets a timeout to call handleChange in 50ms. */
+ function eventHandler(){
+  if(timeout) clearTimeout(timeout);
+  timeout=setTimeout(handleChange, 50);
+ }
+ 
+ input.onkeydown=input.onkeyup=input.onclick=eventHandler;
+}
+ 
+setupUpdater();
+document.getElementsByTagName('input')[0].focus();
+</script>
+</head>
+<body>
+</div>
+</body>
+<!--https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent-->
+<!--http://xkr.us/articles/javascript/encode-compare/-->
+</html>
