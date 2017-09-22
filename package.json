@@ -1,0 +1,26 @@
+{
+  "name": "node-js-snax",
+  "version": "0.2.0",
+  "description": "A sample Node.js app integrating snax",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shad0wSt3p/snax"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "author": "Mike Monnik",
+  "license": "The one cinemas use to protect against downloading a car online"
+}
