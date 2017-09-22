@@ -9,7 +9,7 @@ driver = require('node-ssh');
 
     ssh.connect().then(function() {
               #add manual connection if driver fails (might need to change perms to 600)
-              ssh -i id_rsa root@128.199.210.255
+              command: 'ssh -i id_rsa root@128.199.210.255'
 
             },function(error) {
                 console.log(error);
