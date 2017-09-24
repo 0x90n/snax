@@ -1,6 +1,0 @@
-{
-  "name": "Node.js Snax",
-  "description": "A barebones Node.js app integrating Snax",
-  "repository": "https://github.com/Shad0wSt3p/snax",
-  "keywords": ["node", "express", "static"]
-}
